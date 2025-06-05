@@ -207,18 +207,18 @@ func viewData() {
 					continue
 				}
 
-				// Print header
+				
 				fmt.Println("\n╔═══════╦═══════════════╦═══════════════════════╦═══════════════════╦═══════════════════╗")
 				fmt.Println("║  NO   ║      NIM       ║         NAME          ║      COURSE       ║      ORIGIN       ║")
 				fmt.Println("╠═══════╬═══════════════╬═══════════════════════╬═══════════════════╬═══════════════════╣")
 
-				// Print data rows
+				
 				for i, m := range studentData {
 					fmt.Printf("║ %-5d ║ %-13s ║ %-21s ║ %-17s ║ %-17s ║\n",
 						i+1, m.NIM, truncateString(m.Name, 21), truncateString(m.Course, 17), truncateString(m.Origin, 17))
 				}
 
-				// Print footer
+				
 				fmt.Println("╚═══════╩═══════════════╩═══════════════════════╩═══════════════════╩═══════════════════╝")
 				break
 			}
@@ -249,19 +249,18 @@ func viewData() {
 					continue
 				}
 
-				// Print header
+				
 				fmt.Println("\n╔═══════╦═══════════════════╦═══════════════════════╦═══════╦═══════════════════╦═══════════════════╗")
 				fmt.Println("║  NO   ║       AUTHOR       ║         JUDUL         ║ TAHUN ║  TGL PEMINJAMAN   ║ TGL PENGEMBALIAN  ║")
 				fmt.Println("╠═══════╬═══════════════════╬═══════════════════════╬═══════╬═══════════════════╬═══════════════════╣")
 
-				// Print data rows
+			
 				for i, b := range bookData {
 					fmt.Printf("║ %-5d ║ %-17s ║ %-21s ║ %-5d ║ %-17s ║ %-17s ║\n",
 						i+1, truncateString(b.Author, 17), truncateString(b.Judul, 21),
 						b.Tahun, truncateString(b.TanggalPeminjaman, 17), truncateString(b.TanggalPengembalian, 17))
 				}
 
-				// Print footer
 				fmt.Println("╚═══════╩═══════════════════╩═══════════════════════╩═══════╩═══════════════════╩═══════════════════╝")
 				break
 			}
@@ -292,18 +291,17 @@ func viewData() {
 					continue
 				}
 
-				// Print header
+			
 				fmt.Println("\n╔═══════╦═══════════════════╦═══════════════════════╦═══════════════════╗")
 				fmt.Println("║  NO   ║        NIP        ║         NAMA          ║      JABATAN      ║")
 				fmt.Println("╠═══════╬═══════════════════╬═══════════════════════╬═══════════════════╣")
 
-				// Print data rows
+			
 				for i, p := range employeeData {
 					fmt.Printf("║ %-5d ║ %-17s ║ %-21s ║ %-17s ║\n",
 						i+1, p.NIP, truncateString(p.Nama, 21), truncateString(p.Jabatan, 17))
 				}
 
-				// Print footer
 				fmt.Println("╚═══════╩═══════════════════╩═══════════════════════╩═══════════════════╝")
 				break
 			}
@@ -411,7 +409,7 @@ func updateData(scanner *bufio.Scanner) {
 			nim := scanner.Text()
 			for i, m := range studentData {
 				if m.NIM == nim {
-					// Display current data
+					
 					fmt.Println("\n📋 Current Data:")
 					printStudent(m)
 
@@ -460,7 +458,7 @@ func updateData(scanner *bufio.Scanner) {
 			judul := scanner.Text()
 			for i, b := range bookData {
 				if strings.ToLower(b.Judul) == strings.ToLower(judul) {
-					// Display current data
+					
 					fmt.Println("\n📋 Current Data:")
 					printBuku(b)
 
@@ -514,7 +512,7 @@ func updateData(scanner *bufio.Scanner) {
 			nip := scanner.Text()
 			for i, p := range employeeData {
 				if p.NIP == nip {
-					// Display current data
+					
 					fmt.Println("\n📋 Current Data:")
 					printPegawai(p)
 
@@ -862,7 +860,7 @@ func printStudent(m Mahasiswa) {
 	fmt.Println("╚═══════════════╩═══════════════════════╩═══════════════════╩═══════════════════╝")
 }
 
-// Tambahan fungsi pencarian filter Buku
+
 func sequentialSearchBukuFiltered(data []Buku, keyword string) {
 	found := false
 	foundBooks := []Buku{}
@@ -880,19 +878,19 @@ func sequentialSearchBukuFiltered(data []Buku, keyword string) {
 		return
 	}
 
-	// Print header
+	
 	fmt.Println("\n╔═══════╦═══════════════════╦═══════════════════════╦═══════╦═══════════════════╦═══════════════════╗")
 	fmt.Println("║  NO   ║       AUTHOR       ║         JUDUL         ║ TAHUN ║  TGL PEMINJAMAN   ║ TGL PENGEMBALIAN  ║")
 	fmt.Println("╠═══════╬═══════════════════╬═══════════════════════╬═══════╬═══════════════════╬═══════════════════╣")
 
-	// Print data rows
+	
 	for i, b := range foundBooks {
 		fmt.Printf("║ %-5d ║ %-17s ║ %-21s ║ %-5d ║ %-17s ║ %-17s ║\n",
 			i+1, truncateString(b.Author, 17), truncateString(b.Judul, 21),
 			b.Tahun, truncateString(b.TanggalPeminjaman, 17), truncateString(b.TanggalPengembalian, 17))
 	}
 
-	// Print footer
+	
 	fmt.Println("╚═══════╩═══════════════════╩═══════════════════════╩═══════╩═══════════════════╩═══════════════════╝")
 }
 
@@ -903,17 +901,15 @@ func binarySearchBukuFiltered(data []Buku, keyword string) {
 	for low <= high {
 		mid := (low + high) / 2
 		if strings.Contains(strings.ToLower(data[mid].Judul), keyword) {
-			// Print header
+			
 			fmt.Println("\n╔═══════════════════╦═══════════════════════╦═══════╦═══════════════════╦═══════════════════╗")
 			fmt.Println("║       AUTHOR       ║         JUDUL         ║ TAHUN ║  TGL PEMINJAMAN   ║ TGL PENGEMBALIAN  ║")
 			fmt.Println("╠═══════════════════╬═══════════════════════╬═══════╬═══════════════════╬═══════════════════╣")
 
-			// Print data row
 			fmt.Printf("║ %-17s ║ %-21s ║ %-5d ║ %-17s ║ %-17s ║\n",
 				truncateString(data[mid].Author, 17), truncateString(data[mid].Judul, 21),
 				data[mid].Tahun, truncateString(data[mid].TanggalPeminjaman, 17), truncateString(data[mid].TanggalPengembalian, 17))
 
-			// Print footer
 			fmt.Println("╚═══════════════════╩═══════════════════════╩═══════╩═══════════════════╩═══════════════════╝")
 			found = true
 			return
@@ -929,7 +925,7 @@ func binarySearchBukuFiltered(data []Buku, keyword string) {
 	}
 }
 
-// Helper function to truncate strings for table display
+
 func truncateString(s string, maxLen int) string {
 	if len(s) <= maxLen {
 		return s
@@ -937,7 +933,7 @@ func truncateString(s string, maxLen int) string {
 	return s[:maxLen-3] + "..."
 }
 
-// Additional print functions for each data type
+
 func printBuku(b Buku) {
 	fmt.Println("\n╔═══════════════════╦═══════════════════════╦═══════╦═══════════════════╦═══════════════════╗")
 	fmt.Println("║       AUTHOR       ║         JUDUL         ║ TAHUN ║  TGL PEMINJAMAN   ║ TGL PENGEMBALIAN  ║")
